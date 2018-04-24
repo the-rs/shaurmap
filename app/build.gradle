@@ -1,0 +1,125 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def appSettingsPropertiesFile = rootProject.file("appsettings.properties")
+def appSettingProperties = new Properties()
+appSettingProperties.load(new FileInputStream(appSettingsPropertiesFile))
+
+android {
+    signingConfigs {
+        debugConfig {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('keystore/debug.keystore')
+            storePassword 'android'
+        }
+    }
+
+    buildToolsVersion rootProject.extensions.ext.android.buildTools
+    compileSdkVersion 26
+
+    defaultConfig {
+        applicationId "com.rightsoftware.shaurmap"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 10
+        versionName "0.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'GOOGLE_WEB_CLIENT_ID', appSettingProperties['GoogleWebClientId']
+        buildConfigField 'String', 'REST_API_URL', appSettingProperties['RestApiUrl']
+    }
+
+    buildTypes {
+        debug {
+            manifestPlaceholders = [GOOGLE_MAPS_API_KEY: appSettingProperties['GoogleMapsApiKeyDebug']]
+            debuggable true
+            minifyEnabled true
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debugConfig
+        }
+        release {
+            manifestPlaceholders = [GOOGLE_MAPS_API_KEY: appSettingProperties['GoogleMapsApiKeyRelease']]
+            minifyEnabled true
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':business')
+    implementation project(':data')
+
+    def appDependencies = rootProject.ext.appDependencies
+
+    implementation appDependencies.kotlinStdLib
+
+    implementation appDependencies.toothpickRuntime
+    kapt appDependencies.toothpickCompiler
+
+    implementation appDependencies.rxJava
+    implementation appDependencies.rxKotlin
+    implementation appDependencies.rxAndroid
+    implementation appDependencies.rxBinding
+
+    implementation appDependencies.supportAppCompat
+    implementation appDependencies.supportDesign
+    implementation appDependencies.supportCardView
+    implementation appDependencies.supportConstraintLayout
+    implementation appDependencies.playServicesMaps
+
+    implementation appDependencies.ankoCommons
+    implementation appDependencies.ankoAppCompatCommons
+    implementation appDependencies.ankoDesign
+
+    implementation appDependencies.moxy
+    implementation appDependencies.moxyAppCompat
+    kapt appDependencies.moxyCompiler
+    implementation appDependencies.mapsExtensions
+    implementation(appDependencies.glide) {
+        exclude group: "com.android.support"
+    }
+    kapt appDependencies.glideCompiler
+    implementation appDependencies.cicerone
+    implementation appDependencies.adapterDelegates
+    implementation appDependencies.slidableActivity
+
+    implementation appDependencies.circleImageView
+    implementation(appDependencies.snackProgressBar) {
+        exclude group: "com.android.support"
+    }
+    implementation appDependencies.simpleRatingBar
+    implementation appDependencies.williamChart
+    implementation appDependencies.likeButton
+
+    implementation(appDependencies.permissionsDispatcher){
+        exclude group: "com.android.support"
+        exclude module: "support-v13"
+    }
+    kapt appDependencies.permissionsDispatcherProcessor
+}
+
+kapt {
+    generateStubs = true
+
+    arguments {
+        arg("toothpick_registry_package_name", "com.rightsoftware.shaurmap")
+        arg("toothpick_registry_children_package_names", "com.rightsoftware.shaurmap.data,com.rightsoftware.shaurmap.business")
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rightsoftware.shaurmap">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.launch.MainActivity"
+            android:theme="@style/AppTheme.Splash"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${GOOGLE_MAPS_API_KEY}" />
+
+        <activity
+            android:name=".ui.auth.AuthActivity"
+            android:label="@string/title_activity_auth"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".ui.profile.ChangeDisplayNameActivity"
+            android:label="@string/name"
+            android:windowSoftInputMode="stateVisible"
+            android:theme="@style/AppTheme.Slidable"/>
+
+        <activity
+            android:name=".ui.restaurant.RestaurantDetailsActivity"
+            android:theme="@style/AppTheme.Slidable"/>
+
+        <activity
+            android:name=".ui.reviews.ReviewsListActivity"
+            android:theme="@style/AppTheme.Slidable"/>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:elevation="0dp">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:id="@+id/pbLoading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:indeterminate="true"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <fragment
+                    android:id="@+id/mapFragment"
+                    class="com.androidmapsextensions.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+                <LinearLayout
+                    android:id="@+id/llContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mapFragment"
+                    android:divider="?android:dividerHorizontal"
+                    android:orientation="vertical"
+                    android:showDividers="middle"
+                    android:visibility="invisible"
+                    tools:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="?android:dividerVertical"
+                        android:showDividers="middle"
+                        android:weightSum="100">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="85"
+                            android:background="?attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:id="@+id/ivCreatorThumbnail"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:src="@tools:sample/avatars" />
+
+                            <!-- todo slidable textview for long name -->
+                            <TextView
+                                android:id="@+id/tvCreatorName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                app:layout_constraintBottom_toTopOf="@+id/tvCreatedDate"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toEndOf="@+id/ivCreatorThumbnail"
+                                app:layout_constraintTop_toTopOf="@+id/ivCreatorThumbnail"
+                                app:layout_constraintVertical_chainStyle="spread"
+                                tools:text="@tools:sample/full_names" />
+
+                            <TextView
+                                android:id="@+id/tvCreatedDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/ivCreatorThumbnail"
+                                app:layout_constraintStart_toStartOf="@+id/tvCreatorName"
+                                app:layout_constraintTop_toBottomOf="@+id/tvCreatorName"
+                                tools:text="Published on 30 Jan 2017" />
+                        </android.support.constraint.ConstraintLayout>
+
+                        <com.like.LikeButton
+                            android:id="@+id/btnToggleFavorite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="15"
+                            app:anim_scale_factor="2"
+                            app:icon_size="30dp"
+                            app:icon_type="heart"
+                            tools:layout_height="30dp"
+                            tools:layout_width="30dp" />
+
+                    </LinearLayout>
+
+                    <com.rightsoftware.shaurmap.ui.global.custom.MyReviewView
+                        android:id="@+id/viewMyReview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingStart="16dp"
+                        android:paddingTop="8dp">
+
+                        <com.iarcuschin.simpleratingbar.SimpleRatingBar
+                            android:id="@+id/rbAvgRating"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginStart="16dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvAvgRating"
+                            app:layout_constraintEnd_toStartOf="@id/glVerticalHalf"
+                            app:layout_constraintStart_toEndOf="@+id/tvAvgRating"
+                            app:layout_constraintTop_toTopOf="@+id/tvAvgRating"
+                            app:srb_isIndicator="true"
+                            app:srb_numberOfStars="5"
+                            tools:srb_rating="3" />
+
+                        <TextView
+                            android:id="@+id/tvAvgRating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:textSize="48sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="4.8" />
+
+                        <TextView
+                            android:id="@+id/tvReviewsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toStartOf="@+id/ivPersonIcon"
+                            app:layout_constraintHorizontal_chainStyle="packed"
+                            app:layout_constraintStart_toStartOf="@id/rbAvgRating"
+                            app:layout_constraintTop_toBottomOf="@id/rbAvgRating"
+                            tools:text="46" />
+
+                        <ImageView
+                            android:id="@+id/ivPersonIcon"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_person"
+                            android:tint="@color/darkGray"
+                            app:layout_constraintBottom_toBottomOf="@id/tvReviewsCount"
+                            app:layout_constraintEnd_toEndOf="@id/rbAvgRating"
+                            app:layout_constraintStart_toEndOf="@+id/tvReviewsCount"
+                            app:layout_constraintTop_toTopOf="@id/tvReviewsCount" />
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/glVerticalHalf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.5" />
+
+                        <com.db.chart.view.HorizontalBarChartView
+                            android:id="@+id/chartRating"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="16dp"
+                            app:chart_axis="false"
+                            app:chart_axisBorderSpacing="0dp"
+                            app:chart_barSpacing="0dp"
+                            app:chart_fontSize="12dp"
+                            app:chart_setSpacing="0dp"
+                            app:layout_constraintBottom_toBottomOf="@id/tvAvgRating"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/glVerticalHalf"
+                            app:layout_constraintTop_toTopOf="@id/tvAvgRating" />
+
+                        <TextView
+                            android:id="@+id/tvTaste"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/taste"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvTasteLikes"
+                            app:layout_constraintStart_toStartOf="@+id/tvAvgRating"
+                            app:layout_constraintTop_toTopOf="@+id/pbTasteLikes" />
+
+                        <ProgressBar
+                            android:id="@+id/pbTasteLikes"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:max="100"
+                            android:progress="50"
+                            android:progressDrawable="@drawable/progress_bar_green_red"
+                            app:layout_constraintEnd_toEndOf="@+id/chartRating"
+                            app:layout_constraintStart_toStartOf="@+id/chartRating"
+                            app:layout_constraintTop_toBottomOf="@+id/tvAvgRating"
+                            tools:progress="80" />
+
+                        <TextView
+                            android:id="@+id/tvService"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/service"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvServiceLikes"
+                            app:layout_constraintStart_toStartOf="@+id/tvTaste"
+                            app:layout_constraintTop_toTopOf="@+id/pbServiceLikes" />
+
+                        <ProgressBar
+                            android:id="@+id/pbServiceLikes"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="9dp"
+                            android:layout_marginTop="32dp"
+                            android:max="100"
+                            android:progress="50"
+                            android:progressDrawable="@drawable/progress_bar_green_red"
+                            app:layout_constraintEnd_toEndOf="@+id/pbTasteLikes"
+                            app:layout_constraintStart_toStartOf="@+id/pbTasteLikes"
+                            app:layout_constraintTop_toBottomOf="@+id/pbTasteLikes"
+                            tools:progress="30" />
+
+                        <TextView
+                            android:id="@+id/tvTasteLikes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toStartOf="@id/pbTasteLikes"
+                            app:layout_constraintTop_toBottomOf="@id/pbTasteLikes"
+                            tools:text="7" />
+
+                        <TextView
+                            android:id="@+id/tvTasteDislikes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="@id/pbTasteLikes"
+                            app:layout_constraintTop_toBottomOf="@id/pbTasteLikes"
+                            tools:text="3" />
+
+                        <TextView
+                            android:id="@+id/tvServiceLikes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toStartOf="@id/pbServiceLikes"
+                            app:layout_constraintTop_toBottomOf="@id/pbServiceLikes"
+                            tools:text="2" />
+
+                        <TextView
+                            android:id="@+id/tvServiceDislikes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="@id/pbServiceLikes"
+                            app:layout_constraintTop_toBottomOf="@id/pbServiceLikes"
+                            tools:text="5" />
+
+                        <Button
+                            android:id="@+id/btnAllReviews"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="?attr/selectableItemBackground"
+                            android:padding="8dp"
+                            android:text="@string/show_all_reviews"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvServiceDislikes" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/tvComments"
+                            style="@style/LargeText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/comments"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvCommentsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toBottomOf="@id/tvComments"
+                            app:layout_constraintStart_toEndOf="@id/tvComments"
+                            app:layout_constraintTop_toTopOf="@id/tvComments"
+                            tools:text="14" />
+
+                        <ImageView
+                            android:id="@+id/ivOwnCommentThumbnail"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tvComments"
+                            tools:src="@tools:sample/avatars" />
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/tilComment"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/ivOwnCommentThumbnail"
+                            app:layout_constraintTop_toTopOf="@id/ivOwnCommentThumbnail">
+
+                            <android.support.design.widget.TextInputEditText
+                                android:id="@+id/etComment"
+                                style="@style/RegularText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/post_comment"
+                                android:paddingEnd="56dp"
+                                android:paddingStart="16dp"
+                                android:paddingTop="0dp" />
+                        </android.support.design.widget.TextInputLayout>
+
+                        <ImageView
+                            android:id="@+id/ivBtnPostComment"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:src="@drawable/ic_send"
+                            android:tint="@color/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="@id/tilComment"
+                            app:layout_constraintEnd_toEndOf="@id/tilComment"
+                            app:layout_constraintTop_toTopOf="@id/tilComment" />
+
+                        <ProgressBar
+                            android:id="@+id/pbPostComment"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:indeterminate="true"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="@id/tilComment"
+                            app:layout_constraintEnd_toEndOf="@id/tilComment"
+                            app:layout_constraintTop_toTopOf="@id/tilComment"
+                            tools:visibility="visible" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <View
+                        android:id="@+id/focusableView"
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true" />
+                </LinearLayout>
+            </RelativeLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <ProgressBar
+            android:id="@+id/pbComments"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvComments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbarSize="3dp"
+            android:scrollbarThumbVertical="@android:color/darker_gray"
+            android:scrollbars="vertical"
+            tools:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/item_comment" />
+
+    </FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

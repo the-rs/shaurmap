@@ -1,0 +1,200 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/glVerticalHalf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/ivOwnThumbnail"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/avatar_placeholder_square"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivBtnDelete"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        android:src="@drawable/ic_delete"
+        android:tint="@android:color/darker_gray"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivOwnThumbnail"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/ivBtnEdit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        android:src="@drawable/ic_edit"
+        android:tint="@android:color/darker_gray"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/ivBtnDelete"
+        app:layout_constraintTop_toTopOf="@id/ivOwnThumbnail"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tvRateThisRestaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/rate_this_restaurant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivOwnThumbnail" />
+
+    <TextView
+        android:id="@+id/tvReviewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivOwnThumbnail"
+        tools:text="@tools:sample/full_names"
+        tools:visibility="gone" />
+
+    <com.iarcuschin.simpleratingbar.SimpleRatingBar
+        android:id="@+id/rbMyReview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRateThisRestaurant"
+        app:srb_numberOfStars="5"
+        app:srb_rating="3"
+        app:srb_starSize="40dp"
+        app:srb_stepSize="1"
+        tools:srb_rating="3" />
+
+    <TextView
+        android:id="@id/tvTaste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/taste"
+        app:layout_constraintEnd_toStartOf="@+id/glVerticalHalf"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rbMyReview" />
+
+    <com.like.LikeButton
+        android:id="@+id/btnTasteLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:anim_scale_factor="1.5"
+        app:circle_start_color="@color/lightGreen"
+        app:circle_end_color="@color/green"
+        app:dots_primary_color="@color/green"
+        app:dots_secondary_color="@color/darkGreen"
+        app:icon_size="30dp"
+        app:icon_type="thumb"
+        app:layout_constraintEnd_toStartOf="@+id/btnTasteDislike"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTaste"
+        app:like_drawable="@drawable/ic_thumb_up_green"
+        app:unlike_drawable="@drawable/ic_thumb_up"
+        tools:layout_height="25dp"
+        tools:layout_width="25dp" />
+
+    <com.like.LikeButton
+        android:id="@+id/btnTasteDislike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:anim_scale_factor="1.5"
+        app:circle_start_color="@color/lightRed"
+        app:dots_primary_color="@color/lightRed"
+        app:dots_secondary_color="@color/orange"
+        app:icon_size="30dp"
+        app:icon_type="thumb"
+        app:layout_constraintBottom_toBottomOf="@+id/btnTasteLike"
+        app:layout_constraintEnd_toStartOf="@+id/glVerticalHalf"
+        app:layout_constraintStart_toEndOf="@id/btnTasteLike"
+        app:layout_constraintTop_toTopOf="@+id/btnTasteLike"
+        app:like_drawable="@drawable/ic_thumb_down_red"
+        app:unlike_drawable="@drawable/ic_thumb_down"
+        tools:layout_height="25dp"
+        tools:layout_width="25dp" />
+
+    <TextView
+        android:id="@+id/tvService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/service"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="@+id/glVerticalHalf"
+        app:layout_constraintTop_toTopOf="@+id/tvTaste" />
+
+    <com.like.LikeButton
+        android:id="@+id/btnServiceLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:anim_scale_factor="1.5"
+        app:circle_start_color="@color/lightGreen"
+        app:circle_end_color="@color/green"
+        app:dots_primary_color="@color/green"
+        app:dots_secondary_color="@color/darkGreen"
+        app:icon_size="30dp"
+        app:icon_type="thumb"
+        app:layout_constraintEnd_toStartOf="@+id/btnServiceDislike"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="@id/glVerticalHalf"
+        app:layout_constraintTop_toBottomOf="@id/tvService"
+        app:like_drawable="@drawable/ic_thumb_up_green"
+        app:unlike_drawable="@drawable/ic_thumb_up"
+        tools:layout_height="25dp"
+        tools:layout_width="25dp" />
+
+    <com.like.LikeButton
+        android:id="@+id/btnServiceDislike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:anim_scale_factor="1.5"
+        app:circle_start_color="@color/lightRed"
+        app:dots_primary_color="@color/lightRed"
+        app:dots_secondary_color="@color/orange"
+        app:icon_size="30dp"
+        app:icon_type="thumb"
+        app:layout_constraintBottom_toBottomOf="@+id/btnServiceLike"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnServiceLike"
+        app:layout_constraintTop_toTopOf="@+id/btnServiceLike"
+        app:like_drawable="@drawable/ic_thumb_down_red"
+        app:unlike_drawable="@drawable/ic_thumb_down"
+        tools:layout_height="25dp"
+        tools:layout_width="25dp" />
+
+    <Button
+        android:id="@+id/btnSubmitReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:padding="8dp"
+        android:text="@string/submit"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTasteLike" />
+
+</android.support.constraint.ConstraintLayout>

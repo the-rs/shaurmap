@@ -1,0 +1,32 @@
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    def businessDependencies = rootProject.ext.businessDependencies
+
+    implementation businessDependencies.kotlinStdLib
+
+    implementation businessDependencies.toothpickRuntime
+    kapt businessDependencies.toothpickCompiler
+
+    implementation businessDependencies.rxJava
+    implementation businessDependencies.rxKotlin
+
+    implementation businessDependencies.javaxAnnotations
+
+}
+
+kapt {
+    generateStubs = true
+
+    arguments{
+        arg("toothpick_registry_package_name", "com.rightsoftware.shaurmap.business")
+    }
+}
+
+

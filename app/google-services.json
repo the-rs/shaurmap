@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "841468186742",
+    "firebase_url": "https://shaurmap-dev.firebaseio.com",
+    "project_id": "shaurmap-dev",
+    "storage_bucket": "shaurmap-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841468186742:android:58104bf7537eb343",
+        "android_client_info": {
+          "package_name": "com.rightsoftware.shaurmap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841468186742-33iuv9vrco211r575k5rcg3sup6j2j46.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rightsoftware.shaurmap",
+            "certificate_hash": "599fa83c575dfb8f992d9d37cadcebf4824cb394"
+          }
+        },
+        {
+          "client_id": "841468186742-k5rlkji4ujkldngjgq5juq3dm2978rf8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeeeIzrsJEwsky6KC8oPbR1SszkVU9AyE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841468186742-k5rlkji4ujkldngjgq5juq3dm2978rf8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
