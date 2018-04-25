@@ -6,8 +6,8 @@
     <string name="profile">Профиль</string>
     <string name="email">Почта</string>
     <string name="password">Пароль</string>
-    <string name="sign_in">Войти</string>
-    <string name="sign_up">Зарегистрироваться</string>
+    <string name="sign_in">Вход</string>
+    <string name="sign_up">Регистрация</string>
     <string name="user_info">Информация пользователя</string>
     <string name="name">Имя</string>
     <string name="save">Сохранить</string>
