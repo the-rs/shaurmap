@@ -16,8 +16,8 @@ class EmptyListViewHolder(
         view.btnRefresh.setOnClickListener { refreshListener() }
     }
 
-    fun showEmptyData() {
-        view.tvErrorDescription.text = res.getText(R.string.nothing_here_yet)
+    fun showEmptyData(msg: String? = null) {
+        view.tvErrorDescription.text =  msg ?: res.getText(R.string.nothing_here_yet)
         view.animateFadeIn(300)
     }
 

@@ -26,7 +26,6 @@ import org.jetbrains.anko.design.longSnackbar
 import toothpick.Toothpick
 
 class ReviewsListActivity : BaseActivity(), ReviewsListView {
-
     override val layoutRes = R.layout.activity_reviews_list
 
     private val adapter = ReviewsAdapter()
@@ -71,7 +70,7 @@ class ReviewsListActivity : BaseActivity(), ReviewsListView {
     }
 
     override fun showEmptyView(show: Boolean) {
-        if (show) emptyListViewHolder.showEmptyData()
+        if (show) emptyListViewHolder.showEmptyData(getString(R.string.no_reviews_yet))
         else emptyListViewHolder.hide()
     }
 

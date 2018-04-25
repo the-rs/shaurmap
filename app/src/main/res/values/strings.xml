@@ -42,7 +42,7 @@
     <string name="show_all">Show all</string>
     <string name="refresh">Refresh</string>
     <string name="something_went_wrong">Something went wrong</string>
-    <string name="nothing_here_yet">There\'s nothing here yet.\nYou\'d be the first</string>
+    <string name="nothing_here_yet">There\'s nothing here yet</string>
     <string name="comments">Comments</string>
     <string name="post_comment">Post a comment…</string>
     <string name="added_to_favorites">Added to favorites</string>
@@ -51,4 +51,5 @@
     <string name="permission_can_be_changed_in_settings">"Permissions can be changed in app settings "</string>
     <string name="permissions_location_denied">You won\'t be able to access your location</string>
     <string name="enable_location">You should enable location services</string>
+    <string name="no_reviews_yet">There\'s no reviews here yet. Your would be the first</string>
 </resources>

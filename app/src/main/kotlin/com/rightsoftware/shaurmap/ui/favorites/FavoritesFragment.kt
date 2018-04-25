@@ -12,6 +12,7 @@ import com.rightsoftware.shaurmap.di.DI
 import com.rightsoftware.shaurmap.presentation.favorites.FavoritesPresenter
 import com.rightsoftware.shaurmap.presentation.favorites.FavoritesView
 import com.rightsoftware.shaurmap.ui.global.base.BaseFragment
+import com.rightsoftware.shaurmap.ui.global.list.EmptyListViewHolder
 import com.rightsoftware.shaurmap.ui.global.list.FavoriteRestaurantAdapterDelegate
 import com.rightsoftware.shaurmap.ui.global.list.ProgressAdapterDelegate
 import com.rightsoftware.shaurmap.ui.global.list.ProgressItem
@@ -19,12 +20,15 @@ import com.rightsoftware.shaurmap.utils.extensions.animateFadeIn
 import com.rightsoftware.shaurmap.utils.extensions.animateFadeOut
 import com.rightsoftware.shaurmap.utils.extensions.visible
 import kotlinx.android.synthetic.main.fragment_favorites.*
+import kotlinx.android.synthetic.main.layout_empty_list.*
 import org.jetbrains.anko.design.longSnackbar
 import toothpick.Toothpick
 
 class FavoritesFragment : BaseFragment(), FavoritesView {
     override val layoutRes = R.layout.fragment_favorites
+
     private val adapter = FavoritesAdapter()
+    private lateinit var emptyListViewHolder: EmptyListViewHolder
 
     @InjectPresenter lateinit var presenter: FavoritesPresenter
 
@@ -42,6 +46,8 @@ class FavoritesFragment : BaseFragment(), FavoritesView {
         recyclerView.adapter = adapter
 
         swipeToRefresh.setOnRefreshListener { presenter.refreshFavoriteRestaurants() }
+        emptyListViewHolder = EmptyListViewHolder(layoutEmptyList, { presenter.refreshFavoriteRestaurants() })
+
     }
 
     override fun onResume() {
@@ -70,11 +76,13 @@ class FavoritesFragment : BaseFragment(), FavoritesView {
     }
 
     override fun showEmptyView(show: Boolean) {
-        // todo this stuff
+        if (show) emptyListViewHolder.showEmptyData()
+        else emptyListViewHolder.hide()
     }
 
     override fun showEmptyError(show: Boolean, message: String?) {
-
+        if (show) emptyListViewHolder.showEmptyError(message)
+        else emptyListViewHolder.hide()
     }
 
     override fun showMessage(message: String) {
