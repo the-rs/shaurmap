@@ -66,8 +66,7 @@ class ChangeDisplayNameActivity : SlidableActivity(), ChangeDisplayNameView {
     override fun onResume() {
         super.onResume()
         navigationHolder.setNavigator {
-            if(it is Back)
-                finish()
+            it.forEach { if(it is Back) finish() }
         }
     }
 
