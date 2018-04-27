@@ -28,6 +28,8 @@ class MainFragment : BaseFragment() {
 
     private fun showTab(id: Int) {
         childFragmentManager.transaction {
+            setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+            
             findFragment(R.id.action_map)?.let {
                 if(it.isVisible)
                     hide(it)
