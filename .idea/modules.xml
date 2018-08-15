@@ -4,8 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/business/business.iml" filepath="$PROJECT_DIR$/business/business.iml" />
-      <module fileurl="file://$PROJECT_DIR$/com.rightsoftware.shaurmap.droid.iml" filepath="$PROJECT_DIR$/com.rightsoftware.shaurmap.droid.iml" />
       <module fileurl="file://$PROJECT_DIR$/data/data.iml" filepath="$PROJECT_DIR$/data/data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shaurmap.iml" filepath="$PROJECT_DIR$/shaurmap.iml" />
     </modules>
   </component>
 </project>

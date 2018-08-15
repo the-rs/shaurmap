@@ -1,9 +1,12 @@
 package com.rightsoftware.shaurmap
 
 import android.app.Application
+import com.crashlytics.android.Crashlytics
+import com.crashlytics.android.core.CrashlyticsCore
 import com.rightsoftware.shaurmap.di.DI
 import com.rightsoftware.shaurmap.di.modules.AppModule
 import com.rightsoftware.shaurmap.di.modules.BusinessModule
+import io.fabric.sdk.android.Fabric
 import toothpick.Toothpick
 import toothpick.configuration.Configuration
 import toothpick.registries.FactoryRegistryLocator
@@ -13,8 +16,18 @@ import toothpick.registries.MemberInjectorRegistryLocator
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
+
+        initCrashlytics()
         configureToothpick()
         initAppScopes()
+    }
+
+    private fun initCrashlytics() {
+        val crashlyticsKit = Crashlytics.Builder()
+                .core(CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build())
+                .build()
+
+        Fabric.with(this, crashlyticsKit)
     }
 
     private fun configureToothpick() {

@@ -12,6 +12,7 @@ buildscript {
         jcenter()
 
         maven{ url "http://objectbox.net/beta-repo/" }
+        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
         apply from: 'dependencies.gradle'
@@ -20,6 +21,7 @@ buildscript {
         classpath buildPlugins.kotlin
         classpath buildPlugins.googleServices
         classpath buildPlugins.objectBox
+        classpath buildPlugins.fabricTools
     }
 }
 

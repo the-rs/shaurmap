@@ -20,14 +20,16 @@ ext {
 
     build = [
             gradle: '3.0.1',
-            googleServices: '3.1.1',
-            objectBox: '1.0.1'
+            googleServices: '3.1.2',
+            objectBox: '1.0.1',
+            fabricTools: '1.25.4'
     ]
 
     // Google
     supportVersion = '26.1.0'
     constraintLayoutVersion = '1.0.2'
     playServicesVersion = '11.8.0'
+    crashlyticsVersion = '2.9.4'
 
     // RX
     rxJavaVersion = '2.1.7'
@@ -66,7 +68,8 @@ ext {
             gradle        : "com.android.tools.build:gradle:$build.gradle",
             kotlin        : "org.jetbrains.kotlin:kotlin-gradle-plugin:$compiler.kotlin",
             googleServices: "com.google.gms:google-services:$build.googleServices",
-            objectBox     : "io.objectbox:objectbox-gradle-plugin:$build.objectBox"
+            objectBox     : "io.objectbox:objectbox-gradle-plugin:$build.objectBox",
+            fabricTools   : "io.fabric.tools:gradle:$build.fabricTools"
     ]
 
     businessDependencies = [
@@ -126,6 +129,7 @@ ext {
             williamChart: "com.diogobernardino:williamchart:$williamChartVersion",
             likeButton: "com.github.jd-alexander:LikeButton:$likeButtonVersion",
             permissionsDispatcher: "com.github.hotchemi:permissionsdispatcher:$permissionsDispatcherVersion",
-            permissionsDispatcherProcessor: "com.github.hotchemi:permissionsdispatcher-processor:$permissionsDispatcherVersion"
+            permissionsDispatcherProcessor: "com.github.hotchemi:permissionsdispatcher-processor:$permissionsDispatcherVersion",
+            crashlytics: "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
     ]
 }
